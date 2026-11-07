@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <title>Our Projects</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url("bg-img.jpg") center center / cover no-repeat fixed;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            padding: 50px 30px 100px 30px;
+            background: transparent;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-self: start;
+        }
+        .logo img {
+            width: 70px;
+            height: auto;
+        }
+        .nav-menu {
+            justify-self: center;
+        }
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            color: #cccccc;
+            font-size: 18px;
+            transition: color .3s ease;
+        }
+        .nav-menu a:hover {
+            color: white;
+        }
+        .call-button {
+            justify-self: end;
+            background-color: rgb(0, 143, 0);
+            color: #dbdbdb;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        .button {
+            display: inline-block;
+            background-color: rgb(0, 143, 0);
+            color: #f3f3f3;
+            text-decoration: none;
+            padding: 11px 16px;
+            border: 0;
+            border-radius: 5px;
+            font: inherit;
+            transition: background-color .3s ease, transform .3s ease;
+        }
+        .button:hover {
+            background-color: #087208;
+            transform: translateY(-2px);
+        }
+        .projects-content {
+            color: #cccccc;
+            padding-bottom: 25px;
+        }
+        .page-heading {
+            text-align: center;
+            margin: 0 0 15px;
+            font-size: 36px;
+        }
+        .page-intro {
+            max-width: 760px;
+            margin: 0 auto 45px;
+            text-align: center;
+            line-height: 1.7;
+            font-size: 18px;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+        }
+        .project-card {
+            background: #cccccc;
+            color: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, .2);
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 38px rgba(0, 0, 0, .28);
+        }
+        .project-image {
+            position: relative;
+        }
+        .project-image img {
+            display: block;
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .project-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 7px 11px;
+            border-radius: 20px;
+            background: rgb(0, 143, 0);
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .project-info {
+            padding: 22px;
+        }
+        .project-info h2 {
+            margin: 0 0 8px;
+            font-size: 22px;
+            color: #222;
+        }
+        .project-location {
+            color: rgb(0, 143, 0);
+            font-weight: bold;
+            margin: 0 0 14px;
+        }
+        .project-info > p:not(.project-location) {
+            line-height: 1.6;
+            margin: 0 0 18px;
+        }
+        .project-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+        .project-details span {
+            padding: 7px 10px;
+            border-radius: 4px;
+            background: #e8e8e8;
+            font-size: 14px;
+        }
+        .project-info .button {
+            font-size: 15px;
+        }
+        .project-process {
+            margin-top: 85px;
+            text-align: center;
+        }
+        .project-process h2 {
+            margin: 0 0 15px;
+            color: #fff;
+            font-size: 30px;
+        }
+        .process-intro {
+            max-width: 700px;
+            margin: 0 auto 35px;
+            line-height: 1.7;
+        }
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+        }
+        .process-card {
+            padding: 25px 20px;
+            background-color: #cccccc;
+            color: #333;
+            border-radius: 10px;
+            transition: transform .3s ease;
+        }
+        .process-card:hover {
+            transform: translateY(-6px);
+        }
+        .process-card h3 {
+            margin: 0 0 10px;
+            color: rgb(0, 143, 0);
+        }
+        .process-card p {
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+        .projects-cta {
+            margin-top: 65px;
+            padding: 35px;
+            border-radius: 10px;
+            background-color: #cccccc;
+            color: #333;
+            text-align: center;
+            transition: transform .3s ease;
+        }
+        .projects-cta:hover {
+            transform: translateY(-6px);
+        }
+        .projects-cta h2 {
+            margin: 0 0 12px;
+            color: rgb(0, 143, 0);
+        }
+        .projects-cta p {
+            max-width: 700px;
+            margin: 0 auto 20px;
+            line-height: 1.7;
+            color: #333;
+        }
+        .footer {
+            color: #cccccc;
+            margin-top: 85px;
+            padding: 50px 30px 0;
+        }
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 35px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 40px;
+        }
+        .footer-section h3 {
+            color: #cccccc;
+            font-size: 20px;
+            margin: 0 0 20px;
+        }
+        .footer-section p {
+            color: #cccccc;
+            line-height: 1.7;
+            margin: 0;
+        }
+        .footer-section a {
+            display: block;
+            color: #cccccc;
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: color .3s ease;
+        }
+        .footer-section a:hover {
+            color: rgb(0, 143, 0);
+        }
+        .footer-bottom {
+            border-top: 1px solid #cccccc;
+            text-align: center;
+            padding: 15px 0;
+        }
+        .footer-bottom p {
+            color: #cccccc;
+            margin: 0;
+            font-size: 14px;
+        }
+        @media (max-width: 900px) {
+            header {
+                grid-template-columns: auto 1fr auto;
+                gap: 15px;
+                padding: 35px 10px 70px;
+            }
+            .logo img {
+                width: 60px;
+            }
+            .nav-menu ul {
+                gap: 15px;
+            }
+            .nav-menu a {
+                font-size: 16px;
+            }
+            .project-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .project-card:last-child {
+                grid-column: 1 / -1;
+            }
+            .project-card:last-child .project-image img {
+                height: 250px;
+            }
+            .process-grid {
+                gap: 18px;
+            }
+            .footer-container {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 15px;
+            }
+            header {
+                grid-template-columns: 1fr auto;
+                gap: 20px 10px;
+                padding: 25px 5px 45px;
+            }
+            .logo img {
+                width: 55px;
+            }
+            .nav-menu {
+                grid-column: 1 / -1;
+                grid-row: 2;
+                justify-self: center;
+                width: 100%;
+            }
+            .nav-menu ul {
+                justify-content: center;
+                gap: 20px;
+            }
+            .nav-menu a {
+                font-size: 15px;
+            }
+            .call-button {
+                font-size: 14px;
+                padding: 9px 12px;
+            }
+            .page-heading {
+                font-size: 29px;
+            }
+            .page-intro {
+                margin-bottom: 32px;
+                font-size: 16px;
+            }
+            .project-grid, .process-grid {
+                grid-template-columns: 1fr;
+            }
+            .project-card:last-child {
+                grid-column: auto;
+            }
+            .project-card:last-child .project-image img, .project-image img {
+                height: 220px;
+            }
+            .project-process {
+                margin-top: 60px;
+            }
+            .project-process h2 {
+                font-size: 26px;
+            }
+            .projects-cta {
+                margin-top: 48px;
+                padding: 28px 20px;
+            }
+            .footer {
+                margin-top: 50px;
+                padding: 35px 15px 0;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                padding-bottom: 30px;
+            }
+            .footer-section h3 {
+                font-size: 19px;
+                margin-bottom: 12px;
+            }
+            .footer-section a {
+                overflow-wrap: anywhere;
+            }
+            .footer-bottom p {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class = "container">
+        <header>
+            <div class = "logo">
+                <a href = "home.html"><img src = "logo.svg" alt = "Property Dealing home"></a>
+            </div>
+            <nav class = "nav-menu" aria-label = "Main navigation">
+                <ul>
+                    <li><a href = "home.html">Home</a></li>
+                    <li><a href = "about.html">About Us</a></li>
+                    <li><a href = "contact.html">Contact Us</a></li>
+                    <li><a href = "projects.html" aria-current = "page">Projects</a></li>
+                    <li><a href = "investment.html">Investment Opportunities</a></li>
+                    <li><a href = "signup.html">Sign Up</a></li>
+                </ul>
+            </nav>
+            <a href = "tel:+923156611196" class = "call-button">Call Now</a>
+        </header>
+        <main class = "projects-content">
+            <h1 class = "page-heading">Explore Properties in Lahore</h1>
+            <p class = "page-intro">
+                Browse a sample of the property types we help clients explore. Contact us for current
+                availability, pricing, and viewing arrangements.
+            </p>
+            <section class = "project-grid" aria-label = "Featured property opportunities">
+                <article class = "project-card">
+                    <div class = "project-image">
+                        <img src = "house.jpg" alt = "Modern family house in Lahore">
+                        <span class = "project-tag">Homes</span>
+                    </div>
+                    <div class = "project-info">
+                        <h2>Modern Family Homes</h2>
+                        <p class = "project-location">DHA, Lahore</p>
+                        <p>
+                            Explore family homes in a well-known residential area, with layouts and features to suit
+                            different household needs.
+                        </p>
+                        <div class = "project-details">
+                            <span>10 Marla options</span>
+                            <span>Family living</span>
+                        </div>
+                        <a class = "button" href = "contact.html">Ask About Homes</a>
+                    </div>
+                </article>
+                <article class = "project-card">
+                    <div class = "project-image">
+                        <img src = "apartment.jpg" alt = "Apartment building in Lahore">
+                        <span class = "project-tag">Apartments</span>
+                    </div>
+                    <div class = "project-info">
+                        <h2>City Apartments</h2>
+                        <p class = "project-location">Gulberg, Lahore</p>
+                        <p>
+                            Consider apartment living close to city amenities. Ask our team about available layouts,
+                            facilities, and pricing.
+                        </p>
+                        <div class = "project-details">
+                            <span>Multiple layouts</span>
+                            <span>Urban location</span>
+                        </div>
+                        <a class = "button" href = "contact.html">Ask About Apartments</a>
+                    </div>
+                </article>
+                <article class = "project-card">
+                    <div class = "project-image">
+                        <img src = "plot.jpg" alt = "Residential plot ready for development">
+                        <span class = "project-tag">Plots</span>
+                    </div>
+                    <div class = "project-info">
+                        <h2>Residential Plots</h2>
+                        <p class = "project-location">Bahria Town, Lahore</p>
+                        <p>
+                            Compare residential plot options by size, location, development status, and the requirements of
+                            your future build.
+                        </p>
+                        <div class = "project-details">
+                            <span>5 Marla options</span>
+                            <span>Residential use</span>
+                        </div>
+                        <a class = "button" href = "contact.html">Ask About Plots</a>
+                    </div>
+                </article>
+            </section>
+            <section class = "project-process">
+                <h2>How We Help</h2>
+                <p class = "process-intro">From your first enquiry to a property visit, we help you get the details needed to compare your options.</p>
+                <div class = "process-grid">
+                    <article class = "process-card">
+                        <h3>Tell Us What You Need</h3>
+                        <p>Share your budget, preferred locations, and the type of property you have in mind.</p>
+                    </article>
+                    <article class = "process-card">
+                        <h3>Review Suitable Options</h3>
+                        <p>We can discuss matching listings, key details, and questions to ask during your search.</p>
+                    </article>
+                    <article class = "process-card">
+                        <h3>Arrange a Conversation</h3>
+                        <p>Contact our team to ask about availability or arrange a viewing for a property.</p>
+                    </article>
+                </div>
+            </section>
+            <section class = "projects-cta">
+                <h2>Looking for Something Specific?</h2>
+                <p>Let us know what you are searching for and we will help you explore relevant properties across Lahore.</p>
+                <a class = "button" href = "contact.html">Contact Our Team</a>
+            </section>
+        </main>
+    </div>
+    <footer class = "footer">
+        <div class = "footer-container">
+            <div class = "footer-section">
+                <h3>Property Dealing</h3>
+                <p>Your trusted partner for buying, selling, and investing in properties across Lahore.</p>
+            </div>
+            <div class = "footer-section">
+                <h3>Quick Links</h3>
+                <a href = "home.html">Home</a>
+                <a href = "about.html">About Us</a>
+                <a href = "contact.html">Contact Us</a>
+                <a href = "investment.html">Investment Opportunities</a>
+                <a href = "signup.html">Sign Up</a>
+            </div>
+            <div class = "footer-section">
+                <h3>Our Services</h3>
+                <a href = "projects.html">Residential Properties</a>
+                <a href = "projects.html">Commercial Properties</a>
+                <a href = "investment.html">Property Investment</a>
+            </div>
+            <div class = "footer-section">
+                <h3>Contact Us</h3>
+                <p>Lahore, Pakistan</p>
+                <a href = "tel:+923156611196">+92 315 6611196</a>
+                <a href = "mailto:yahyasarkar295@gmail.com">yahyasarkar295@gmail.com</a>
+            </div>
+        </div>
+        <div class = "footer-bottom">
+            <p>&copy; 2026 Property Dealing. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
